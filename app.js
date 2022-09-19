@@ -52,8 +52,14 @@ puedeComprar:function(auto,persona){
    return auto.precio <= persona.capacidadDePagoTotal && auto.precio /auto.cuotas <= persona.capacidadDePagoEnCuotas
    },
   
-   autosQuePuedeComprar:function(){
-     
-   }
- 
+   autosQuePuedeComprar: function(personas){
+      let array = [];
+     let autosQuePuedeComprar= this.autosParaLaVenta().foreach((auto)=>{
+          if (personas.capacidadDePagoTotal <= auto.precio)
+          return this.puedeComprar()
+          else return null
+      })
+      return array.push(autosQuePuedeComprar)
+  }
 }
+console.log(autosQuePuedeComprar())
