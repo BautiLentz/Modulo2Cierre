@@ -54,12 +54,12 @@ puedeComprar:function(auto,persona){
   
    autosQuePuedeComprar: function(personas){
       let array = [];
-     let autosQuePuedeComprar= this.autosParaLaVenta().foreach((auto)=>{
-          if (personas.capacidadDePagoTotal <= auto.precio)
-          return this.puedeComprar()
-          else return null
-      })
-      return array.push(autosQuePuedeComprar)
-  }
+     let autosQuePuedeComprar= this.autosParaLaVenta().forEach((autos)=>{
+      if (this.puedeComprar(autos, personas)) {
+      array.push(autos)
+     }
+     else return null 
+   })  
+   return autosQuePuedeComprar
+},
 }
-console.log(autosQuePuedeComprar())
